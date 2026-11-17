@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Избранный мерч</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px;
+            margin: 0;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .grid {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            width: 280px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+            text-align: left;
+        }
+
+        .card-content h3 {
+            margin: 0 0 10px 0;
+            color: #222;
+        }
+
+        .card-content p {
+            margin: 0;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .back-link {
+            margin-top: 30px;
+            background: #ff4444;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>⭐ Ваше избранное</h1>
+
+    <div class="grid">
+        {% for item in items %}
+        <div class="card">
+            <img src="{{ item.image }}" alt="{{ item.title }}">
+            <div class="card-content">
+                <h3>{{ item.title }}</h3>
+                <p>{{ item.description }}</p>
+            </div>
+        </div>
+        {% else %}
+        <p style="color: #666; font-size: 18px;">Вы еще ничего не добавили в избранное.</p>
+        {% endfor %}
+    </div>
+
+    <a href="/" class="back-link">← Вернуться к выбору</a>
+
+</body>
+
+</html>
